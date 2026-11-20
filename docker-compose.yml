@@ -1,0 +1,17 @@
+
+services:
+  backend:
+    build: ./server
+    container_name: crud-backend-container
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./server/.env
+
+  frontend:
+    build: ./client
+    container_name: crud-frontend-container
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
